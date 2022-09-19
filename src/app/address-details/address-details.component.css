@@ -1,0 +1,20 @@
+.address-div{
+    border: 1px solid black;
+    margin-right: 10px;
+    
+}
+.heading{
+    padding:25px;
+   
+}
+.page-body{
+    padding: 25px;
+}
+.glyphicon{
+    float: right;
+    cursor: pointer;
+}
+.highlighted{
+    padding:25px;
+    background-color: rgb(232, 227, 227);
+}

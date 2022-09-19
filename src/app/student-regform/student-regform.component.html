@@ -1,0 +1,23 @@
+<form #f="ngForm">
+<div>
+    <div>
+    <label for="studentName">Name</label>
+    <input id="studentName" 
+    name="studentName" ngModel 
+    #sname="ngModel" 
+    required
+    (change)="log(sname)"
+    minlength="5"
+    pattern="[a-zA-Z]*"
+    type="text" class="form-control">
+</div>
+<div class="alert alert-danger" 
+        *ngIf="sname.touched && sname.invalid">Name is not valid
+</div>
+<div class="alert alert-danger" 
+    *ngIf="sname.errors?.['minlength']"> Min length should be {{sname.errors?.['minlength'].requiredLength}}
+ </div>
+<div class="alert alert-danger" *ngIf="sname.errors?.['pattern']">Name is not as per Pattern</div>
+</div>
+
+</form>

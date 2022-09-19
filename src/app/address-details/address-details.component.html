@@ -1,0 +1,15 @@
+<div class="address-div">
+    <div class="heading" 
+    [class.highlighted]="isExpanded">
+        <ng-content select=".add-header"></ng-content>
+        <span class="glyphicon"
+        [ngClass]="{
+            'glyphicon-menu-down':!isExpanded,
+            'glyphicon-menu-up':isExpanded }"
+            (click)="isExpanded=!isExpanded">
+        </span>
+    </div>
+    <div *ngIf="isExpanded" class="page-body">
+    <ng-content select=".add-body"></ng-content>
+    </div>
+</div>

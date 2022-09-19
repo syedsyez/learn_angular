@@ -1,0 +1,17 @@
+
+<button [class.btn.btn-primary]="!toggle" (click)="changeOnClick()">Expand/Collapse</button>
+<div *ngIf="toggle">
+<p class="userinfo">{{user.name|uppercase}}</p>
+<p class="userinfo">{{user.age}}</p>
+<p class="userinfo">{{user.networth|currency:'INR':'symbol'}}</p>
+
+<div *ngIf="user.books.length>0">
+<ul>
+    <li *ngFor="let a of user.books">{{a}}</li>
+</ul>
+</div>
+</div>
+<div>
+    <input type="text" name="nameText" 
+    [(ngModel)]="nameText"/> {{nameText}}
+</div>

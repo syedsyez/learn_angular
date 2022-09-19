@@ -1,0 +1,9 @@
+<div>
+ <span class="glyphicon"
+ [ngClass]="{'glyphicon-heart-empty':!isActive,
+ 'glyphicon-heart':isActive}" 
+ (click)="likeButtonClick()">
+</span>   
+
+<span>{{likeCount}}</span>
+</div>
