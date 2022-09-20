@@ -1,23 +1,45 @@
-<form #f="ngForm">
-<div>
+<form #f="ngForm" (ngSubmit)="submit(f)">
     <div>
-    <label for="studentName">Name</label>
-    <input id="studentName" 
-    name="studentName" ngModel 
-    #sname="ngModel" 
-    required
-    (change)="log(sname)"
-    minlength="5"
-    pattern="[a-zA-Z]*"
-    type="text" class="form-control">
-</div>
-<div class="alert alert-danger" 
-        *ngIf="sname.touched && sname.invalid">Name is not valid
-</div>
-<div class="alert alert-danger" 
-    *ngIf="sname.errors?.['minlength']"> Min length should be {{sname.errors?.['minlength'].requiredLength}}
- </div>
-<div class="alert alert-danger" *ngIf="sname.errors?.['pattern']">Name is not as per Pattern</div>
-</div>
-
+        <div>
+            <label for="studentName">Name</label>
+            <input id="studentName" name="studentName" ngModel #sname="ngModel" required (change)="log(sname)"
+                minlength="5" pattern="[a-zA-Z]*" type="text" class="form-control">
+                <div class="alert alert-danger" *ngIf="sname.touched && sname.invalid">Name is not valid
+                </div>
+                <div class="alert alert-danger" *ngIf="sname.errors?.['minlength']">
+                    Min length should be 5
+                </div>
+                <div class="alert alert-danger" *ngIf="sname.errors?.['pattern']">
+                    Name is not as per Pattern
+                </div>
+        
+        </div>
+                <div class="form-group">
+            <label for="emailId">Email Id </label>
+            <input class="form-control" type="text" id="emailId" required ngModel name="email" email #email="ngModel">
+        <div class="alert alert-danger" *ngIf="email.touched && email.value==''">Email id is required</div>
+        <div class="alert alert-danger" *ngIf="email.touched && email.invalid">Email id not in correct format</div>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number </label>
+            <input class="form-control" pattern="[0-9]{10}"type="text"id="phoneNumber" required ngModel name="phoneNumber"  #phoneNumber="ngModel">
+            <div class="alert alert-danger" *ngIf="phoneNumber.touched && phoneNumber.value==''">Phone Number is required</div>
+            <div class="alert alert-danger" *ngIf="phoneNumber.touched && phoneNumber.invalid">Phone number should have 10 digit</div>
+        </div>
+        <div class="form-group">
+            <label for="city">City </label>
+            <select id="city"  ngModel name="city"  #city="ngModel" class="form-control">
+                <option value=""></option>
+                <option *ngFor="let c of cities" [value]="c.id">{{c.name}}</option>
+           
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="isgraduate">
+            <input type="checkbox"id="isgraduate" required ngModel name="isgraduate"  #isgraduate="ngModel" (change)="log(f)">
+            is Candidate Graduate </label>
+        </div>
+        <!--<pre>{{f.value|json}}</pre> -->
+    </div>
+    <button class="btn btn-primary" [disabled]="f.invalid">Submit</button>
 </form>
