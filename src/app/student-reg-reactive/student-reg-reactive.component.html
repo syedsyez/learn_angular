@@ -1,0 +1,45 @@
+<form [formGroup]="form">
+    <div>
+        <div>
+            <label for="studentName">Name</label>
+            <input id="studentName" name="studentName" formControlName="studentName"
+                type="text" class="form-control">
+                <div class="alert alert-danger" *ngIf="studentName?.touched && studentName?.invalid">Name is not valid
+                </div>
+                <div class="alert alert-danger" *ngIf="studentName?.errors?.['minlength']">
+                    Min length should be 5
+                </div>
+                <div class="alert alert-danger" *ngIf="studentName?.errors?.['pattern']">
+                    Name is not as per Pattern
+                </div>
+        
+        </div>
+                <div class="form-group">
+            <label for="emailId">Email Id </label>
+            <input class="form-control" type="text" id="emailId"name="email" formControlName="email" >
+        <div class="alert alert-danger" *ngIf="email?.touched && email?.value==''">Email id is required</div>
+        <div class="alert alert-danger" *ngIf="email?.touched && email?.invalid">Email id not in correct format</div>
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number </label>
+            <input class="form-control" type="text"id="phoneNumber" name="phoneNumber" formControlName="phoneNumber">
+            <div class="alert alert-danger" *ngIf="phoneNumber?.touched && phoneNumber?.value==''">Phone Number is required</div>
+            <div class="alert alert-danger" *ngIf="phoneNumber?.touched && phoneNumber?.invalid">Phone number should have 10 digit</div>
+        </div>
+        <div class="form-group">
+            <label for="city">City </label>
+            <select id="city" name="city" formControlName="city" class="form-control">
+                <option value=""></option>
+                <option *ngFor="let c of cities" [value]="c.id">{{c.name}}</option>
+           
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="isgraduate">
+            <input type="checkbox"id="isgraduate" name="isgraduate" formControlName="isGraduate">
+            is Candidate Graduate </label>
+        </div>
+        <pre>{{form.value|json}}</pre>
+    </div>
+    <button class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+</form>
