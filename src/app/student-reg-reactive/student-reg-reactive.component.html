@@ -3,7 +3,7 @@
         <div>
             <label for="studentName">Name</label>
             <input id="studentName" name="studentName" formControlName="studentName"
-                type="text" class="form-control">
+                type="text" class="form-control" (change)="log(studentName)">
                 <div class="alert alert-danger" *ngIf="studentName?.touched && studentName?.invalid">Name is not valid
                 </div>
                 <div class="alert alert-danger" *ngIf="studentName?.errors?.['minlength']">
@@ -11,6 +11,12 @@
                 </div>
                 <div class="alert alert-danger" *ngIf="studentName?.errors?.['pattern']">
                     Name is not as per Pattern
+                </div>
+                <div class="alert alert-danger" *ngIf="studentName?.errors?.['nameContainsSpace']">
+                    Name should not contain spaces
+                </div>
+                <div class="alert alert-danger" *ngIf="studentName?.errors?.['nameShouldbeUnique']">
+                    Name should be unique
                 </div>
         
         </div>

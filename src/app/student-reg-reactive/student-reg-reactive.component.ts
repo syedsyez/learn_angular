@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { StudentNameValidator } from './studentName.validatorcom';
 
 @Component({
   selector: 'student-reg-reactive',
@@ -10,7 +11,8 @@ export class StudentRegReactiveComponent implements OnInit {
 
    form = new FormGroup({
     studentName:new FormControl('',[Validators.required,
-    Validators.minLength(5)]),
+    Validators.minLength(5),StudentNameValidator.nameShouldnotContainSpace],
+    StudentNameValidator.duplicateCheck),
     email:new FormControl('',[Validators.required,
         Validators.email]),
     phoneNumber:new FormControl('',[Validators.required,
@@ -41,6 +43,9 @@ export class StudentRegReactiveComponent implements OnInit {
     return this.form.get('isGraduate');
   }
 
+  log(x:any){
+    console.log(x);
+  }
    
   constructor() { }
 
