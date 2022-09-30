@@ -32,6 +32,7 @@ export class PostsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("Post Init is called");
     this.service.getAll()
     .subscribe(response=>{
       this.posts = (<[]>response);

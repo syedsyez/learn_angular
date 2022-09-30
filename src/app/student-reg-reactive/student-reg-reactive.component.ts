@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { StudentNameValidator } from './studentName.validatorcom';
 
 @Component({
@@ -8,7 +8,7 @@ import { StudentNameValidator } from './studentName.validatorcom';
   styleUrls: ['./student-reg-reactive.component.css']
 })
 export class StudentRegReactiveComponent implements OnInit {
-
+   //form:any;
    form = new FormGroup({
     studentName:new FormControl('',[Validators.required,
     Validators.minLength(5),StudentNameValidator.nameShouldnotContainSpace],
@@ -20,6 +20,22 @@ export class StudentRegReactiveComponent implements OnInit {
     city: new FormControl(''),
     isGraduate:new FormControl('')
    });
+   /*constructor(fb:FormBuilder) { 
+    this.form = fb.group({
+      studentName:['',[Validators.required,
+        Validators.minLength(5),
+        StudentNameValidator.nameShouldnotContainSpace], 
+        [StudentNameValidator.duplicateCheck]],
+      email:['',Validators.required,
+      Validators.email],
+      phoneNumber:['',[Validators.required,
+        Validators.pattern("[0-9]{10}")]],
+      city:[''],
+      isGraduate:['']
+    });
+    
+
+  }*/
 
    cities=[{id:1, name:"Bangalore"},
    {id:2, name:"Chennai"},
@@ -47,7 +63,7 @@ export class StudentRegReactiveComponent implements OnInit {
     console.log(x);
   }
    
-  constructor() { }
+ 
 
   ngOnInit(): void {
   }

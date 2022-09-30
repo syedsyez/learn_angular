@@ -8,6 +8,8 @@ import { NgForm } from '@angular/forms';
 })
 export class StudentRegformComponent implements OnInit {
 
+  
+
   cities=[{id:1, name:"Bangalore"},
           {id:2, name:"Chennai"},
           {id:3, name:"Hyderabad"},
